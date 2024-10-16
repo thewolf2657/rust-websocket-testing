@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script>
+        var ws = new WebSocket('wss://127.0.0.1:8080/', 'echo-protocol');
+        ws.onopen = function () {
+            console.log('socket connection opened properly');
+            ws.send("Hello World"); // send a message
+            console.log('message sent');
+        };
+
+        ws.onmessage = function (evt) {
+            console.log("Message received = " + evt.data);
+        };
+
+        ws.onclose = function () {
+            // websocket is closed.
+            console.log("Connection closed...");
+        };
+        </script>
+    </head>
+</html>
